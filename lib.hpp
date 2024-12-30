@@ -22,6 +22,7 @@ using namespace std;
 
 typedef Eigen::Vector3d vec3;
 typedef Eigen::Matrix3d mat3;
+typedef Eigen::Vector2i vec;
 
 static unordered_map<string, int> names;
 
@@ -37,6 +38,12 @@ int remap(string name) {
 struct Hash {
     size_t operator ()(const pair<int, int>& k) const {
         return ((uint64_t)k.first << 32) + k.second;
+    }
+};
+
+struct VHash {
+    size_t operator ()(const vec& k) const {
+        return ((uint64_t)k[1] << 32) + k[0];
     }
 };
 
