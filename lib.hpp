@@ -44,7 +44,7 @@ struct Hash {
 
 struct VHash {
     size_t operator ()(const vec& k) const {
-        return ((uint64_t)k[1] << 32) + k[0];
+        return ((uint64_t)k[1] << 32) + ((uint64_t)k[0] & 0xFFFFFFFFllu);
     }
 };
 
